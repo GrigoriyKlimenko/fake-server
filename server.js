@@ -31,8 +31,8 @@ server.use(
 router.render = (req, res) => {
   let data = res.locals.data;
   if (req.url === '/catalog?q=') {
-    data = data.map(({ id, name }) => {
-      return {id, name}
+    data = data.map(({ id, name, image }) => {
+      return {id, name, image}
     });
   }
   res.jsonp(data);
