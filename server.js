@@ -30,7 +30,7 @@ server.use(
 
 router.render = (req, res) => {
   let data = res.locals.data;
-  if (req.url.match(/\/catalog?q=/)) {
+  if (req.url.match(/\/catalog\?name_like=/)) {
     data = data.map(({ id, name, image }) => {
       return {id, name, image}
     });
