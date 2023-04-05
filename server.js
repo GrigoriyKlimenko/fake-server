@@ -28,6 +28,16 @@ server.use(
   jsonServer.rewriter({ '/api/*': '/$1', })
 );
 
+router.render = (req, res) => {
+  let data = res.locals.data;
+  if (req.url === '/catalog') {
+    data = data.map(({ id, name }) => {
+      return {id, name}
+    });
+  }
+  res.jsonp(data);
+}
+
 server.use(router);
 
 server.listen(PORT, () => {
